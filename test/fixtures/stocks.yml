@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  vegetable: one
+  purchased_on: 2026-05-15
+  status: 1
+
+two:
+  user: two
+  vegetable: two
+  purchased_on: 2026-05-15
+  status: 1

@@ -1,0 +1,22 @@
+<div class="max-w-lg mx-auto mt-6 px-4">
+  <div class="flex items-center mb-4">
+    <%= link_to "← 戻る", stocks_path, class: "text-gray-500 mr-4" %>
+    <h1 class="text-xl font-bold">野菜を選んで登録</h1>
+  </div>
+
+  <p class="text-sm text-gray-500 mb-4">今日買った野菜をタップしてください</p>
+
+  <%= form_with model: @stock, url: stocks_path do |f| %>
+    <div class="grid grid-cols-3 gap-3 mb-6">
+      <% @vegetables.each do |vegetable| %>
+        <label class="border rounded-lg p-3 text-center cursor-pointer hover:bg-green-50 has-[:checked]:border-green-500 has-[:checked]:bg-green-50">
+          <%= f.radio_button :vegetable_id, vegetable.id, class: "hidden" %>
+          <p class="text-2xl mb-1">🥦</p>
+          <p class="text-sm"><%= vegetable.name %></p>
+        </label>
+      <% end %>
+    </div>
+
+    <%= f.submit "この野菜を登録する", class: "w-full bg-green-500 text-white py-3 rounded font-bold" %>
+  <% end %>
+</div>
