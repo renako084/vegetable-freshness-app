@@ -6,14 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <% if flash[:notice] %>
+      <div class="bg-green-100 text-green-700 p-3 text-center">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="bg-red-100 text-red-700 p-3 text-center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <%= yield %>
   </body>
 </html>
