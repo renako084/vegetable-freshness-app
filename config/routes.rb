@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   resources :stocks, only: [:index, :new, :create, :destroy]
+  get  "/others/new",  to: "others#new",    as: :new_other
+  post "/others",      to: "others#create", as: :others
 end
