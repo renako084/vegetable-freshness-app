@@ -5,9 +5,9 @@ valid_names = [
   "レタス", "もやし", "ごぼう", "れんこん", "さつまいも",
   "かぼちゃ", "白菜", "大根", "長ねぎ", "にんにく"
 ]
-Vegetable.where.not(name: valid_names)
-         .where.not(id: Stock.select(:vegetable_id))
-         .destroy_all
+invalid_vegetables = Vegetable.where.not(name: valid_names)
+Stock.where(vegetable_id: invalid_vegetables.select(:id)).destroy_all
+invalid_vegetables.destroy_all
 vegetables = [
   { name: "にんじん", shelf_life_days: 14 },
   { name: "たまねぎ", shelf_life_days: 30 },
