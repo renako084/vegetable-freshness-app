@@ -11,6 +11,18 @@
   </head>
 
   <body>
+    <nav class="bg-gray-800 text-white px-4 py-3 flex justify-between items-center">
+      <span class="font-bold">🥦 野菜鮮度管理アプリ</span>
+      <div>
+        <% if logged_in? %>
+          <%= button_to "ログアウト", logout_path, method: :delete, class: "bg-red-500 text-white px-3 py-1 rounded text-sm" %>
+        <% else %>
+          <%= link_to "ログイン", login_path, class: "text-white mr-4" %>
+          <%= link_to "新規登録", signup_path, class: "text-white" %>
+        <% end %>
+      </div>
+    </nav>
+
     <% if flash[:notice] %>
       <div class="bg-green-100 text-green-700 p-3 text-center">
         <%= flash[:notice] %>

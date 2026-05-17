@@ -6,6 +6,13 @@ class OthersController < ApplicationController
   end
 
   def create
+    if params[:vegetable_name].blank?
+      flash.now[:alert] = "野菜名を入力してください"
+      @stock = Stock.new
+      render :new, status: :unprocessable_entity
+      return
+    end
+
     vegetable = Vegetable.find_or_create_by(name: params[:vegetable_name]) do |v|
       v.shelf_life_days = 5
     end
