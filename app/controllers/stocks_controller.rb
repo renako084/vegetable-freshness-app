@@ -14,7 +14,7 @@ class StocksController < ApplicationController
 
   def create
     @stock = current_user.stocks.build(stock_params)
-    @stock.purchased_on = Date.today
+    @stock.purchased_on = params[:stock][:purchased_on].present? ? params[:stock][:purchased_on] : Date.today
     @stock.status = :active
     if @stock.save
       redirect_to stocks_path, notice: "野菜を登録しました！"
@@ -33,6 +33,6 @@ class StocksController < ApplicationController
   private
 
   def stock_params
-    params.require(:stock).permit(:vegetable_id)
+    params.require(:stock).permit(:vegetable_id, :purchased_on)
   end
 end
