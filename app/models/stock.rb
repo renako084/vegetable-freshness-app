@@ -12,10 +12,10 @@ class Stock < ApplicationRecord
   end
 
   def priority_color
-    ratio = elapsed_days.to_f / vegetable.shelf_life_days
-    if ratio >= 0.9
+    remaining_days = vegetable.shelf_life_days - elapsed_days
+    if remaining_days <= 1
       "red"
-    elsif ratio >= 0.7
+    elsif remaining_days <= 3
       "yellow"
     else
       "green"
