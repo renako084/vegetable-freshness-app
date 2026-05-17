@@ -1,3 +1,11 @@
+# 正規の野菜名リスト以外のデータを削除
+valid_names = [
+  "にんじん", "たまねぎ", "じゃがいも", "ブロッコリー", "ほうれん草",
+  "トマト", "きゅうり", "ピーマン", "なす", "キャベツ",
+  "レタス", "もやし", "ごぼう", "れんこん", "さつまいも",
+  "かぼちゃ", "白菜", "大根", "長ねぎ", "にんにく"
+]
+Vegetable.where.not(name: valid_names).destroy_all
 vegetables = [
   { name: "にんじん", shelf_life_days: 14 },
   { name: "たまねぎ", shelf_life_days: 30 },
