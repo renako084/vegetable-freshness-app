@@ -4,13 +4,12 @@
   <%= form_with model: @user, url: signup_path do |f| %>
     <% if @user.errors.any? %>
       <div class="bg-red-100 text-red-700 p-3 rounded mb-4">
-        <% @user.errors.each do |error| %>
-          <p><%= error.full_message
+         <% @user.errors.each do |error| %>
+            <p><%= error.full_message
                   .gsub("Email", "メールアドレス")
-                  .gsub("Password confirmation", "パスワード確認")
-                  .gsub("Password", "パスワード")
-                  .gsub("doesn't match Password", "がパスワードと一致しません") %></p>
-        <% end %>
+                  .gsub("Password confirmation doesn't match Password", "パスワード確認がパスワードと一致しません")
+                  .gsub("Password", "パスワード") %></p>
+         <% end %>
       </div>
     <% end %>
 
