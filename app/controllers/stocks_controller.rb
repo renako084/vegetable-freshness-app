@@ -1,5 +1,4 @@
 class StocksController < ApplicationController
-  before_action :require_login
 
   def index
     @stocks = current_user.stocks.includes(:vegetable)
@@ -13,6 +12,14 @@ class StocksController < ApplicationController
   end
 
   def create
+    if params[:stock][:vegetable_id].blank?
+      @vegetables = Vegetable.order(:name)
+      @stock = Stock.new
+      flash.now[:alert] = "野菜を選択してください"
+      render :new, status: :unprocessable_entity
+      return
+    end
+
     @stock = current_user.stocks.build(stock_params)
     @stock.purchased_on = params[:stock][:purchased_on].present? ? params[:stock][:purchased_on] : Date.today
     @stock.status = :active
