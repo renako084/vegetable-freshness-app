@@ -1,4 +1,5 @@
 class StocksController < ApplicationController
+  before_action :require_login
 
   def index
     @stocks = current_user.stocks.includes(:vegetable)
