@@ -16,7 +16,7 @@
       <div class="border-l-4 <%= color == 'red' ? 'border-red-500' : color == 'yellow' ? 'border-yellow-500' : 'border-green-500' %> bg-white rounded shadow mb-3 p-4 flex justify-between items-center">
         <div>
           <p class="font-bold text-lg"><%= stock.vegetable.name %></p>
-          <p class="text-sm text-gray-500">登録日: <%= stock.purchased_on.strftime('%m/%d') %>　経過: <%= stock.elapsed_days %>日</p>
+          <p class="text-sm text-gray-500">登録日: <%= stock.purchased_on.strftime('%m/%d') %>　残り: <%= [stock.vegetable.shelf_life_days - stock.elapsed_days, 0].max %>日</p>
           <span class="text-xs text-white px-2 py-1 rounded <%= color == 'red' ? 'bg-red-500' : color == 'yellow' ? 'bg-yellow-500' : 'bg-green-500' %>">
             <%= color == 'red' ? '要注意' : color == 'yellow' ? '注意' : '新鮮' %>
           </span>
