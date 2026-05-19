@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to stocks_path, notice: "アカウントを作成しました！"
     else
+      flash.now[:alert] = "入力内容をご確認ください"
       render :new, status: :unprocessable_entity
     end
   end

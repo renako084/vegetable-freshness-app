@@ -1,18 +1,14 @@
 <div class="text-center mb-4">
   <%= link_to "← トップページに戻る", root_path, class: "text-gray-500 text-sm" %>
 </div>
+
 <div class="max-w-md mx-auto mt-10">
   <h1 class="text-2xl font-bold mb-6">アカウント登録</h1>
 
   <%= form_with model: @user, url: signup_path do |f| %>
     <% if @user.errors.any? %>
       <div class="bg-red-100 text-red-700 p-3 rounded mb-4">
-         <% @user.errors.each do |error| %>
-            <p><%= error.full_message
-                  .gsub("Email", "メールアドレス")
-                  .gsub("Password confirmation doesn't match Password", "パスワード確認がパスワードと一致しません")
-                  .gsub("Password", "パスワード") %></p>
-         <% end %>
+        <p>入力内容をご確認ください</p>
       </div>
     <% end %>
 
@@ -24,6 +20,7 @@
     <div class="mb-4">
       <%= f.label :password, "パスワード", class: "block mb-1" %>
       <%= f.password_field :password, class: "border rounded w-full p-2" %>
+      <p class="text-xs text-gray-400 mt-1">※8文字以上で入力してください</p>
     </div>
 
     <div class="mb-4">
